@@ -1,0 +1,133 @@
+/* Base Styles */
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: #f0f4f8;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Layout */
+.container {
+    background: white;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #e0e0e0;
+}
+
+.header {
+    background: #e3f2fd;
+    color: #333;
+    padding: 40px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.header p {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #555;
+}
+
+.content {
+    padding: 40px;
+}
+
+.content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+.footer {
+    background: #e8e8e8;
+    padding: 40px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Project Cards */
+.card {
+    background: #fafafa;
+    padding: 40px;
+    margin-bottom: 40px;
+    border: 1px solid #e0e0e0;
+}
+
+.card h4 {
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    background: #e3f2fd;
+    color: #1a1a1a;
+    text-decoration: none;
+    margin: 5px;
+    border: 1px solid #e0e0e0;
+    outline: none;
+}
+
+.button:hover {
+    background: #bbdefb;
+}
+
+.button:focus {
+    outline: none;
+}
+
+/* Lists */
+.list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.list li {
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header p {
+        font-size: 1.1rem;
+    }
+
+    .content {
+        padding: 20px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+}
