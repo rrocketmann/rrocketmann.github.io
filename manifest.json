@@ -1,0 +1,11 @@
+{
+    "name": "Martin Malyshau Portfolio",
+    "short_name": "Portfolio",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#F0F4F8",
+    "theme_color": "#E3F2FD",
+    "description": "Martin Malyshau's portfolio website",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false
+}

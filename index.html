@@ -1,85 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="portfolio">
-    <meta name="author" content="Martin Malyshau">
-    <title>Portfolio website</title>
-    <link href="style.css" rel="stylesheet">
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Martin Malyshau Portfolio">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Portfolio">
+
+  <title>Martin Malyshau - Portfolio</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    const serviceWorkerVersion = "2505145002";
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Martin Malyshau</h1>
-            <p>My portfolio</p>
-        </div>
-        
-        <div class="content" id="about">
-            <h2>About</h2>
-            <p>I am a young programmer with interests in computer science and physics.
-            Over the past years I have made several projects combining the two fields.
-            I'm proficient with python, specifically pygame: the python game development library.
-            If you would like to hear more from me please subscribe to my YouTube channel or follow my GitHub account.</p>
-        </div>
-        
-        <div class="content" id="projects">
-            <h2>Projects</h2>
-            <br>
-            <ul class="list">
-                <li class="card">
-                    <h4>OrbitDance</h4>
-                    <p>This is a simple and lightweight gravitational simulator that can display the paths of three bodies
-                        under the effect of their gravitational forces.</p>
-                    <a class="button" href="https://github.com/rrocketmann/OrbitDance" target="_blank">Details »</a>
-                </li>
-                <li class="card">
-                    <h4>Bigram</h4>
-                    <p>A simple Python-based algoritham that predicts the next word based on the last. It uses preloaded txt files and can generate strands of nonsense text.</p>
-                    <a class="button" href="https://github.com/rrocketmann/bigram" target="_blank">Details »</a>
-                </li>
-                <li class="card">
-                    <h4>Conways game of life</h4>
-                    <p>This is an unofficial cell simulator following the ruleset of how cells are killed and born.
-                        Runs without a display and instead prints a matrix in terminal which represents the board.</p>
-                    <a class="button" href="https://github.com/rrocketmann/conwaysgameoflife" target="_blank">Details »</a>
-                </li>
-                <li class="card">
-                    <h4>Labyrinth</h4>
-                    <p>A fun little maze game that has a string matrix map that can be modified at the top of the code.</p>
-                    <a class="button" href="https://github.com/rrocketmann/labyrinth" target="_blank">Details »</a>
-                </li>
-                <li class="card">
-                    <h4>Music Player</h4>
-                    <p>Very basic desktop music player made with only a python backend and able to play a list of preloaded songs.</p>
-                    <a class="button" href="https://github.com/rrocketmann/MusicPlayer" target="_blank">Details »</a>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="content" id="contact+links">
-            <h2>Contact Me</h2>
-            <form action="/submit_form.py" method="post">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" required></textarea><br>
-                <button class="button" type="submit">Submit</button>
-            </form>
-            
-            <br><br><br>
-            
-            <h2>Links</h2>
-            <p>Here are the links to my YouTube and GitHub account. If you enjoy my work please follow one of these accounts. Thank you for visiting this website, it was hard to make.</p>
-            <a class="button" href="https://www.youtube.com/@yetanothernutrino" target="_blank">YouTube »</a>
-            <a class="button" href="https://github.com/rrocketmann" target="_blank">GitHub »</a>
-        </div>
-        
-        <div class="footer">
-            <p>© Martin Malyshau 2026, made with Python, Html, and Css</p>
-        </div>
-    </div>
+  <script>
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
