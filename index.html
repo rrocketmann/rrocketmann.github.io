@@ -1,38 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <base href="/">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Martin Malyshau Portfolio">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Portfolio">
-
   <title>Martin Malyshau - Portfolio</title>
-  <link rel="manifest" href="manifest.json">
-
-  <script>
-    const serviceWorkerVersion = "2879064404";
-  </script>
-  <script src="flutter_bootstrap.js" async></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <header class="header">
+      <h1>Martin Malyshau</h1>
+      <p>My portfolio</p>
+    </header>
+
+    <section class="content">
+      <h2>About</h2>
+      <p>I am a young programmer with interests in computer science and physics. Over the past years I have made several projects combining the two fields. I'm proficient with python, specifically pygame: the python game development library. If you would like to see more of my work, check out my GitHub account.</p>
+    </section>
+
+    <section class="content">
+      <h2>Projects</h2>
+      
+      <div class="card">
+        <h4>OrbitDance</h4>
+        <p>This is a simple and lightweight gravitational simulator that can display the paths of three bodies under the effect of their gravitational forces.</p>
+        <a href="https://github.com/rrocketmann/OrbitDance" class="button" target="_blank">Details »</a>
+      </div>
+
+      <div class="card">
+        <h4>Bigram</h4>
+        <p>A simple Python-based algoritham that predicts the next word based on the last. It uses preloaded txt files and can generate strands of nonsense text.</p>
+        <a href="https://github.com/rrocketmann/bigram" class="button" target="_blank">Details »</a>
+      </div>
+
+      <div class="card">
+        <h4>Conways game of life</h4>
+        <p>This is an unofficial cell simulator following the ruleset of how cells are killed and born. Runs without a display and instead prints a matrix in terminal which represents the board.</p>
+        <a href="https://github.com/rrocketmann/conwaysgameoflife" class="button" target="_blank">Details »</a>
+      </div>
+
+      <div class="card">
+        <h4>Labyrinth</h4>
+        <p>A fun little maze game that has a string matrix map that can be modified at the top of the code.</p>
+        <a href="https://github.com/rrocketmann/labyrinth" class="button" target="_blank">Details »</a>
+      </div>
+
+      <div class="card">
+        <h4>Music Player</h4>
+        <p>Very basic desktop music player made with only a python backend and able to play a list of preloaded songs.</p>
+        <a href="https://github.com/rrocketmann/MusicPlayer" class="button" target="_blank">Details »</a>
+      </div>
+    </section>
+
+    <section class="content">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit" class="button">Submit</button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>© Martin Malyshau 2026</p>
+    </footer>
+  </div>
+
   <script>
-    window.addEventListener('load', function(ev) {
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      const subject = encodeURIComponent('Portfolio Contact from ' + name);
+      const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      const mailtoUrl = 'mailto:schroddacat@gmail.com?subject=' + subject + '&body=' + body;
+      
+      window.location.href = mailtoUrl;
+      
+      // Clear form
+      this.reset();
     });
   </script>
 </body>
