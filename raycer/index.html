@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>raycer</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        #raycer {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+    
+<script type="module">
+import init, * as bindings from '/raycer/raycer-291ff1808473f7d1.js';
+const wasm = await init({ module_or_path: '/raycer/raycer-291ff1808473f7d1_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    
+<link rel="modulepreload" href="/raycer/raycer-291ff1808473f7d1.js" crossorigin="anonymous" integrity="sha384-H9vll6yc/3ChWZ9p8/1PYLIMaLxPEm7qqil28Od2X9C0hLqaBOdpFUDhrxIeosEl"><link rel="preload" href="/raycer/raycer-291ff1808473f7d1_bg.wasm" crossorigin="anonymous" integrity="sha384-UY8mn0l9IgUxnZlRoWrIeanXL27bqO7DqE6GAK1EyzAUw9rfhPeOqGSnHWKKmLe4" as="fetch" type="application/wasm"></head>
+<body>
+    <canvas id="raycer"></canvas>
+</body>
+</html>
