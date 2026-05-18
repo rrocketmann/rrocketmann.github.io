@@ -8,212 +8,103 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header class="header block">
-      <h1>Martin Malyshau</h1>
-      <p>My portfolio</p>
-    </header>
+  <div class="grid">
 
-    <section class="about-box block">
-      <div class="section-label">About</div>
-      <p>I am a young programmer with interests in computer science and physics. Over the past years I have made several projects combining the two fields. I'm proficient with python, specifically pygame: the python game development library. If you would like to see more of my work, check out my GitHub account. I also compete in many bay area hackathons. I currently attend UC Berkeley... no... Jane Lathrop Stanford Middle School (Go pathers!).</p>
-    </section>
-
-    <section class="section-wrapper block">
-      <div class="section-label">Projects</div>
-      <div class="grid">
-
-        <!-- Hanvas -->
-        <div class="project-box" data-name="Hanvas">
-          <!-- Add screenshot via: style="background-image: url('screenshots/hanvas.png');" -->
-          <div class="box-overlay">
-            <h3>Hanvas</h3>
-            <p class="box-desc">Hanvas allows users to interact with a canvas and draw shapes using simple hand gestures. Utilizing deepmind's mediapipe models the program can recognize and respond to various hand movements. Works can be shared with the community if desired. This project won third place in gunnhacks 12.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/hanvas" class="btn" target="_blank">GitHub</a>
-              <a href="https://hanvas.onrender.com" class="btn" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gen-slater -->
-        <div class="project-box" data-name="Gen-slater">
-          <!-- Add screenshot via: style="background-image: url('screenshots/genslater.png');" -->
-          <div class="box-overlay">
-            <h3>Gen-slater</h3>
-            <p class="box-desc">Gen-slater is a web app that allows users to translate text between the slang of different generations.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/gen-slater" class="btn" target="_blank">GitHub</a>
-              <a href="https://gen-slater.onrender.com" class="btn" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Socrates-ai -->
-        <div class="project-box" data-name="Socrates-ai">
-          <!-- Add screenshot via: style="background-image: url('screenshots/socrates.png');" -->
-          <div class="box-overlay">
-            <h3>Socrates-ai</h3>
-            <p class="box-desc">A web app that allows users to ask questions and receive more questions from an AI. The app uses the OpenAI API to generate responses based on the user's input.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/socrates-ai" class="btn" target="_blank">GitHub</a>
-              <a href="https://socrates-ai-umrp.onrender.com" class="btn" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- De-bug-duck -->
-        <div class="project-box" data-name="De-bug-duck">
-          <!-- Add screenshot via: style="background-image: url('screenshots/debugduck.png');" -->
-          <div class="box-overlay">
-            <h3>De-bug-duck</h3>
-            <p class="box-desc">A simple web app that allows users to type out their code and then have a virtual duck read it back to them. The idea is that by explaining the code to the duck, users can often identify errors or areas for improvement in their code.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/de-bug-duck" class="btn" target="_blank">GitHub</a>
-              <a href="https://de-bug-duck.onrender.com/" class="btn" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Schoolargy -->
-        <div class="project-box" data-name="Schoolargy">
-          <!-- Add screenshot via: style="background-image: url('screenshots/schoolargy.png');" -->
-          <div class="box-overlay">
-            <h3>Schoolargy</h3>
-            <p class="box-desc">One of my more cruel creations, Schoolargy is an unblocked games website specifically masked as PowerSchool's Schoology learning management platform. Now with the rise of new tools such as GoGuardian and Classwize, older gaming websites with their original look tend to get blocked much quicker. Schoolargy avoids this by mimicking the exact visual design of Schoology, a platform that schools actively whitelist, making it appear as legitimate educational software to both filtering tools and teachers alike.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/schoolargy" class="btn" target="_blank">GitHub</a>
-              <a href="https://rrocketmann.github.io/schoolargy" class="btn" target="_blank">Demo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- OrbitDance -->
-        <div class="project-box" data-name="OrbitDance">
-          <!-- Add screenshot via: style="background-image: url('screenshots/orbitdance.png');" -->
-          <div class="box-overlay">
-            <h3>OrbitDance</h3>
-            <p class="box-desc">This is a simple and lightweight gravitational simulator that can display the paths of three bodies under the effect of their gravitational forces.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/OrbitDance" class="btn" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bigram -->
-        <div class="project-box" data-name="Bigram">
-          <!-- Add screenshot via: style="background-image: url('screenshots/bigram.png');" -->
-          <div class="box-overlay">
-            <h3>Bigram</h3>
-            <p class="box-desc">A simple Python-based algorithm that predicts the next word based on the last. It uses preloaded txt files and can generate strands of nonsense text.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/bigram" class="btn" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Conways game of life -->
-        <div class="project-box" data-name="Conway's">
-          <!-- Add screenshot via: style="background-image: url('screenshots/conway.png');" -->
-          <div class="box-overlay">
-            <h3>Conway's Game of Life</h3>
-            <p class="box-desc">This is an unofficial cell simulator following the ruleset of how cells are killed and born. Runs without a display and instead prints a matrix in terminal which represents the board.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/conwaysgameoflife" class="btn" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Labyrinth -->
-        <div class="project-box" data-name="Labyrinth">
-          <!-- Add screenshot via: style="background-image: url('screenshots/labyrinth.png');" -->
-          <div class="box-overlay">
-            <h3>Labyrinth</h3>
-            <p class="box-desc">A fun little maze game that has a string matrix map that can be modified at the top of the code.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/labyrinth" class="btn" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Music Player -->
-        <div class="project-box" data-name="Music Player">
-          <!-- Add screenshot via: style="background-image: url('screenshots/musicplayer.png');" -->
-          <div class="box-overlay">
-            <h3>Music Player</h3>
-            <p class="box-desc">Very basic desktop music player made with only a python backend and able to play a list of preloaded songs.</p>
-            <div class="box-buttons">
-              <a href="https://github.com/rrocketmann/MusicPlayer" class="btn" target="_blank">GitHub</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section-wrapper block">
-      <div class="section-label">Competitions</div>
-      <div class="competitions-list">
-        <div class="competition-item">
-          <h4>ARC Rocketry</h4>
-          <p>I competed with ARC Rocketry and built practical engineering and collaboration skills through challenge-based rocketry work.</p>
-          <a href="https://www.arcrocketry.com" class="btn" target="_blank">Site</a>
-        </div>
-        <div class="competition-item">
-          <h4>Milpitas Hacks</h4>
-          <p>Participated in Milpitas Hacks to design, build, and present rapid prototypes with teammates under time constraints.</p>
-          <a href="https://www.milpitashacks.com" class="btn" target="_blank">Site</a>
-        </div>
-        <div class="competition-item">
-          <h4>Gunn Hack</h4>
-          <p>Competed in Gunn Hack, creating software projects from idea to demo while iterating quickly based on feedback.</p>
-          <a href="https://www.gunnhacks.com" class="btn" target="_blank">Site</a>
-        </div>
-        <div class="competition-item">
-          <h4>VEX IQ</h4>
-          <p>Competed in VEX IQ robotics events focused on robot design, programming, and strategy in match-based challenges.</p>
-          <a href="https://www.vexrobotics.com/iq" class="btn" target="_blank">Site</a>
-        </div>
-        <div class="competition-item">
-          <h4>FLL (FIRST LEGO League)</h4>
-          <p>Participated in FLL, combining robotics and research projects to solve real-world themed engineering problems.</p>
-          <a href="https://www.firstlegoleague.org" class="btn" target="_blank">Site</a>
+    <div class="project-box" data-name="Hanvas">
+      <div class="box-top">
+        <h3>Hanvas</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/hanvas" class="btn" target="_blank">GitHub</a>
+          <a href="https://hanvas.onrender.com" class="btn" target="_blank">Demo</a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="contact-box block">
-      <div class="section-label">Contact Me</div>
-      <form id="contactForm">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+    <div class="project-box" data-name="Gen-slater">
+      <div class="box-top">
+        <h3>Gen-slater</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/gen-slater" class="btn" target="_blank">GitHub</a>
+          <a href="https://gen-slater.onrender.com" class="btn" target="_blank">Demo</a>
+        </div>
+      </div>
+    </div>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+    <div class="project-box" data-name="Socrates-ai">
+      <div class="box-top">
+        <h3>Socrates-ai</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/socrates-ai" class="btn" target="_blank">GitHub</a>
+          <a href="https://socrates-ai-umrp.onrender.com" class="btn" target="_blank">Demo</a>
+        </div>
+      </div>
+    </div>
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+    <div class="project-box" data-name="De-bug-duck">
+      <div class="box-top">
+        <h3>De-bug-duck</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/de-bug-duck" class="btn" target="_blank">GitHub</a>
+          <a href="https://de-bug-duck.onrender.com/" class="btn" target="_blank">Demo</a>
+        </div>
+      </div>
+    </div>
 
-        <button type="submit" class="btn">Submit</button>
-      </form>
-    </section>
+    <div class="project-box" data-name="Schoolargy">
+      <div class="box-top">
+        <h3>Schoolargy</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/schoolargy" class="btn" target="_blank">GitHub</a>
+          <a href="https://rrocketmann.github.io/schoolargy" class="btn" target="_blank">Demo</a>
+        </div>
+      </div>
+    </div>
 
-    <footer class="footer block">
-      <p>&copy; Martin Malyshau 2026</p>
-    </footer>
+    <div class="project-box" data-name="OrbitDance">
+      <div class="box-top">
+        <h3>OrbitDance</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/OrbitDance" class="btn" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-box" data-name="Bigram">
+      <div class="box-top">
+        <h3>Bigram</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/bigram" class="btn" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-box" data-name="Conway's">
+      <div class="box-top">
+        <h3>Conway's Game of Life</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/conwaysgameoflife" class="btn" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-box" data-name="Labyrinth">
+      <div class="box-top">
+        <h3>Labyrinth</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/labyrinth" class="btn" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-box" data-name="Music Player">
+      <div class="box-top">
+        <h3>Music Player</h3>
+        <div class="box-buttons">
+          <a href="https://github.com/rrocketmann/MusicPlayer" class="btn" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      const subject = encodeURIComponent('Portfolio Contact from ' + name);
-      const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
-      window.location.href = 'mailto:schroddacat@gmail.com?subject=' + subject + '&body=' + body;
-      this.reset();
-    });
-  </script>
 </body>
 </html>
