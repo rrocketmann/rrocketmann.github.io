@@ -27,7 +27,7 @@ class Body {
     this.x = x;
     this.y = y;
     const angle = Math.random() * 2 * Math.PI;
-    const speed = 20 + Math.random() * 80;
+    const speed = 80 + Math.random() * 200;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
     this.mass = 1 + Math.random() * 5;
