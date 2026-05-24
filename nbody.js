@@ -2,12 +2,10 @@ const canvas = document.getElementById('nbody');
 const ctx = canvas.getContext('2d');
 
 let W, H;
-let particles = [];
-
-const G = 600;
-const SOFTENING = 15;
-const DAMPING = 0.99;
-const MAX_SPEED = 600;
+let bodies = [];
+const G = 4000;
+const SOFTENING = 2;
+const MAX_SPEED = 3000;
 const RADIUS = 18;
 
 let isDark = false;
@@ -31,13 +29,12 @@ class Body {
     const speed = 50 + Math.random() * 150;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
-    this.mass = 2 + Math.random() * 8;
-    this.hue = Math.random() * 360;
+    this.mass = 1 + Math.random() * 5;
   }
 }
 
 function spawnBody(x, y) {
-  particles.push(new Body(x, y));
+  bodies.push(new Body(x, y));
 }
 
 function wrap(p) {
@@ -47,46 +44,28 @@ function wrap(p) {
   if (p.y > H) p.y -= H;
 }
 
-function computeForces() {
-  const n = particles.length;
+function computeAccelerations() {
+  const n = bodies.length;
   for (let i = 0; i < n; i++) {
-    let fx = 0, fy = 0;
-    const pi = particles[i];
+    let ax = 0, ay = 0;
+    const bi = bodies[i];
     for (let j = 0; j < n; j++) {
       if (i === j) continue;
-      const pj = particles[j];
-      let dx = pj.x - pi.x;
-      let dy = pj.y - pi.y;
+      const bj = bodies[j];
+      let dx = bj.x - bi.x;
+      let dy = bj.y - bi.y;
       if (dx > W / 2) dx -= W;
       else if (dx < -W / 2) dx += W;
       if (dy > H / 2) dy -= H;
       else if (dy < -H / 2) dy += H;
       const distSq = dx * dx + dy * dy + SOFTENING;
       const dist = Math.sqrt(distSq);
-      if (dist < 5) continue;
-      const force = (G * pi.mass * pj.mass) / distSq;
-      fx += force * dx / dist;
-      fy += force * dy / dist;
+      const accel = (G * bj.mass) / distSq;
+      ax += accel * dx / dist;
+      ay += accel * dy / dist;
     }
-    pi.ax = fx / pi.mass;
-    pi.ay = fy / pi.mass;
-  }
-}
-
-function integrate(dt) {
-  for (const p of particles) {
-    p.vx += p.ax * dt;
-    p.vy += p.ay * dt;
-    const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-    if (speed > MAX_SPEED) {
-      p.vx = (p.vx / speed) * MAX_SPEED;
-      p.vy = (p.vy / speed) * MAX_SPEED;
-    }
-    p.vx *= DAMPING;
-    p.vy *= DAMPING;
-    p.x += p.vx * dt;
-    p.y += p.vy * dt;
-    wrap(p);
+    bi.ax = ax;
+    bi.ay = ay;
   }
 }
 
@@ -95,24 +74,44 @@ function draw() {
   ctx.fillRect(0, 0, W, H);
 
   ctx.lineWidth = 2.5;
-  for (const p of particles) {
-    ctx.strokeStyle = isDark
-      ? `hsla(${p.hue}, 80%, 75%, 0.85)`
-      : `hsla(${p.hue}, 70%, 30%, 0.85)`;
+  ctx.strokeStyle = isDark ? '#ffffff' : '#000000';
+  for (const b of bodies) {
     ctx.beginPath();
-    ctx.arc(p.x, p.y, RADIUS, 0, Math.PI * 2);
+    ctx.arc(b.x, b.y, RADIUS, 0, Math.PI * 2);
     ctx.stroke();
   }
 }
 
+const DT = 1 / 120;
+let accumulator = 0;
 let lastTime = 0;
 
+function simStep(dt) {
+  computeAccelerations();
+  for (const b of bodies) {
+    b.vx += b.ax * dt;
+    b.vy += b.ay * dt;
+    const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
+    if (speed > MAX_SPEED) {
+      b.vx = (b.vx / speed) * MAX_SPEED;
+      b.vy = (b.vy / speed) * MAX_SPEED;
+    }
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+    wrap(b);
+  }
+}
+
 function loop(time) {
-  const dt = Math.min((time - lastTime) / 1000, 0.05);
+  if (lastTime === 0) lastTime = time;
+  const frameDt = Math.min((time - lastTime) / 1000, 0.05);
   lastTime = time;
-  if (dt > 0 && particles.length > 1) {
-    computeForces();
-    integrate(dt);
+  if (bodies.length > 1) {
+    accumulator += frameDt;
+    while (accumulator >= DT) {
+      simStep(DT);
+      accumulator -= DT;
+    }
   }
   draw();
   requestAnimationFrame(loop);
@@ -134,6 +133,6 @@ resize();
 detectTheme();
 spawnBody(W / 3, H / 2);
 spawnBody(2 * W / 3, H / 2);
-requestAnimationFrame(loop);
+loop();
 
 window.addEventListener('resize', resize);
