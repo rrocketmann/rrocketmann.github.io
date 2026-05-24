@@ -151,7 +151,7 @@ function loop(time) {
   if (lastTime === 0) lastTime = time;
   const frameDt = Math.min((time - lastTime) / 1000, 0.05);
   lastTime = time;
-  if (bodies.length > 1) {
+  if (bodies.length > 0) {
     accumulator += frameDt;
     while (accumulator >= DT) {
       simStep(DT);
