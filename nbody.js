@@ -3,9 +3,9 @@ const ctx = canvas.getContext('2d');
 
 let W, H;
 let bodies = [];
-const G = 4000;
+const G = 2000000;
 const SOFTENING = 2;
-const MAX_SPEED = 3000;
+const MAX_SPEED = 5000;
 const RADIUS = 18;
 
 let isDark = false;
@@ -26,7 +26,7 @@ class Body {
     this.x = x;
     this.y = y;
     const angle = Math.random() * 2 * Math.PI;
-    const speed = 50 + Math.random() * 150;
+    const speed = 20 + Math.random() * 80;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
     this.mass = 1 + Math.random() * 5;
@@ -82,7 +82,7 @@ function draw() {
   }
 }
 
-const DT = 1 / 120;
+const DT = 1 / 240;
 let accumulator = 0;
 let lastTime = 0;
 
