@@ -95,6 +95,11 @@ a {
   background-color: #f4b6b6;
 }
 
+.project-box[data-name="Raycer"] .box-screenshot img {
+  object-fit: contain;
+  background-color: #f4b6b6;
+}
+
 .project-box[data-name="Hanvas"],
 .project-box[data-name="Schoolargy"] {
   background-color: #bcdcff;
@@ -103,12 +108,16 @@ a {
 .project-box[data-name="Aivester"],
 .project-box[data-name="Fish-logger"],
 .project-box[data-name="Gen-slater"],
-.project-box[data-name="Socrates-ai"] {
+.project-box[data-name="Webllm-chat"] {
   background-color: #c8f2c8;
 }
 
 .project-box[data-name="OrbitDance"] {
   background-color: #f3b8f3;
+}
+
+.project-box[data-name="Socrates-ai"] {
+  background-color: #d4d4d4;
 }
 
 .project-box[data-name="De-bug-duck"] {
