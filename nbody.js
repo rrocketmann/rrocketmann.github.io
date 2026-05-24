@@ -3,12 +3,12 @@ const ctx = canvas.getContext('2d');
 
 let W, H;
 let particles = [];
-const MAX_PARTICLES = 200;
-const G = 180;
-const SOFTENING = 25;
-const DAMPING = 0.997;
-const SPAWN_COUNT = 6;
-const MAX_SPEED = 250;
+const MAX_BODIES = 9;
+const G = 600;
+const SOFTENING = 15;
+const DAMPING = 0.99;
+const MAX_SPEED = 600;
+const RADIUS = 18;
 
 let isDark = false;
 
@@ -23,30 +23,22 @@ function resize() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
-class Particle {
+class Body {
   constructor(x, y) {
     this.x = x;
     this.y = y;
     const angle = Math.random() * 2 * Math.PI;
-    const speed = 20 + Math.random() * 60;
+    const speed = 50 + Math.random() * 150;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
-    this.mass = 4 + Math.random() * 12;
-    this.radius = Math.sqrt(this.mass) * 1.2;
+    this.mass = 2 + Math.random() * 8;
     this.hue = Math.random() * 360;
   }
 }
 
-function spawnParticles(x, y, count) {
-  for (let i = 0; i < count; i++) {
-    if (particles.length >= MAX_PARTICLES) particles.shift();
-    const angle = Math.random() * 2 * Math.PI;
-    const dist = 3 + Math.random() * 12;
-    particles.push(new Particle(
-      x + Math.cos(angle) * dist,
-      y + Math.sin(angle) * dist
-    ));
-  }
+function spawnBody(x, y) {
+  if (particles.length >= MAX_BODIES) return;
+  particles.push(new Body(x, y));
 }
 
 function wrap(p) {
@@ -103,26 +95,14 @@ function draw() {
   ctx.fillStyle = isDark ? '#1a1a1a' : '#ffffff';
   ctx.fillRect(0, 0, W, H);
 
+  ctx.lineWidth = 2.5;
   for (const p of particles) {
-    const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 5);
-    if (isDark) {
-      grad.addColorStop(0, `hsla(${p.hue}, 80%, 70%, 0.45)`);
-      grad.addColorStop(1, `hsla(${p.hue}, 80%, 70%, 0)`);
-    } else {
-      grad.addColorStop(0, `hsla(${p.hue}, 60%, 35%, 0.25)`);
-      grad.addColorStop(1, `hsla(${p.hue}, 60%, 35%, 0)`);
-    }
-    ctx.fillStyle = grad;
+    ctx.strokeStyle = isDark
+      ? `hsla(${p.hue}, 80%, 75%, 0.85)`
+      : `hsla(${p.hue}, 70%, 30%, 0.85)`;
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius * 5, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = isDark
-      ? `hsla(${p.hue}, 80%, 85%, 0.9)`
-      : `hsla(${p.hue}, 60%, 25%, 0.85)`;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.arc(p.x, p.y, RADIUS, 0, Math.PI * 2);
+    ctx.stroke();
   }
 }
 
@@ -131,7 +111,7 @@ let lastTime = 0;
 function loop(time) {
   const dt = Math.min((time - lastTime) / 1000, 0.05);
   lastTime = time;
-  if (dt > 0 && particles.length > 0) {
+  if (dt > 0 && particles.length > 1) {
     computeForces();
     integrate(dt);
   }
@@ -148,12 +128,13 @@ mq.addEventListener('change', detectTheme);
 
 document.addEventListener('click', (e) => {
   if (e.target.closest('.project-box, .btn, a, img')) return;
-  spawnParticles(e.clientX, e.clientY, SPAWN_COUNT);
+  spawnBody(e.clientX, e.clientY);
 });
 
 resize();
 detectTheme();
-spawnParticles(W / 2, H / 2, 18);
+spawnBody(W / 3, H / 2);
+spawnBody(2 * W / 3, H / 2);
 requestAnimationFrame(loop);
 
 window.addEventListener('resize', resize);
