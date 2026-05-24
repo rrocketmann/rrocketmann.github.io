@@ -45,6 +45,41 @@ function wrap(p) {
   if (p.y > H) p.y -= H;
 }
 
+function handleCollisions() {
+  const minDist = RADIUS * 2;
+  const minDistSq = minDist * minDist;
+  for (let i = 0; i < bodies.length; i++) {
+    for (let j = i + 1; j < bodies.length; j++) {
+      const a = bodies[i], b = bodies[j];
+      let dx = b.x - a.x;
+      let dy = b.y - a.y;
+      if (dx > W / 2) dx -= W;
+      else if (dx < -W / 2) dx += W;
+      if (dy > H / 2) dy -= H;
+      else if (dy < -H / 2) dy += H;
+      const distSq = dx * dx + dy * dy;
+      if (distSq < minDistSq && distSq > 0.01) {
+        const dist = Math.sqrt(distSq);
+        const nx = dx / dist, ny = dy / dist;
+        const overlap = minDist - dist;
+        a.x -= nx * overlap / 2;
+        a.y -= ny * overlap / 2;
+        b.x += nx * overlap / 2;
+        b.y += ny * overlap / 2;
+        const relVn = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
+        if (relVn > 0) {
+          const totalMass = a.mass + b.mass;
+          const impulse = 2 * relVn / totalMass;
+          a.vx -= impulse * b.mass * nx;
+          a.vy -= impulse * b.mass * ny;
+          b.vx += impulse * a.mass * nx;
+          b.vy += impulse * a.mass * ny;
+        }
+      }
+    }
+  }
+}
+
 function computeAccelerations() {
   const n = bodies.length;
   for (let i = 0; i < n; i++) {
@@ -108,6 +143,8 @@ function simStep(dt) {
     b.y += b.vy * dt;
     wrap(b);
   }
+  handleCollisions();
+  for (const b of bodies) wrap(b);
 }
 
 function loop(time) {
