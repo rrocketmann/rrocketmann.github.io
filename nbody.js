@@ -131,8 +131,6 @@ document.addEventListener('click', (e) => {
 
 resize();
 detectTheme();
-spawnBody(W / 3, H / 2);
-spawnBody(2 * W / 3, H / 2);
 loop();
 
 window.addEventListener('resize', resize);
