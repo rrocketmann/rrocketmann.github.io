@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 let W, H;
 let particles = [];
-const MAX_BODIES = 9;
+
 const G = 600;
 const SOFTENING = 15;
 const DAMPING = 0.99;
@@ -37,7 +37,6 @@ class Body {
 }
 
 function spawnBody(x, y) {
-  if (particles.length >= MAX_BODIES) return;
   particles.push(new Body(x, y));
 }
 
