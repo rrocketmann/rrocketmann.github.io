@@ -4,8 +4,9 @@ const ctx = canvas.getContext('2d');
 let W, H;
 let bodies = [];
 const G = 2000000;
-const SOFTENING = 2;
-const MAX_SPEED = 5000;
+const SOFTENING = 5;
+const MAX_SPEED = 400;
+const MAX_IMPULSE = 20;
 const RADIUS = 18;
 
 let isDark = false;
@@ -89,8 +90,15 @@ let lastTime = 0;
 function simStep(dt) {
   computeAccelerations();
   for (const b of bodies) {
-    b.vx += b.ax * dt;
-    b.vy += b.ay * dt;
+    let dvx = b.ax * dt;
+    let dvy = b.ay * dt;
+    const impulse = Math.sqrt(dvx * dvx + dvy * dvy);
+    if (impulse > MAX_IMPULSE) {
+      dvx = (dvx / impulse) * MAX_IMPULSE;
+      dvy = (dvy / impulse) * MAX_IMPULSE;
+    }
+    b.vx += dvx;
+    b.vy += dvy;
     const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
     if (speed > MAX_SPEED) {
       b.vx = (b.vx / speed) * MAX_SPEED;
