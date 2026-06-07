@@ -54,20 +54,30 @@ a {
 /* Project Box */
 .project-box {
     position: relative;
-    height: 260px;
+    height: 280px;
     border: 2px solid #333333;
     background-color: #f5f5f5;
     background-size: cover;
     background-position: top center;
     overflow: hidden;
-    border-radius: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Top overlay with title + buttons */
 .box-top {
-    background-color: inherit;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
     border-bottom: 2px solid #333333;
-    padding: 14px 16px;
+    padding: 16px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,7 +103,7 @@ a {
     display: inline-block;
     padding: 8px 16px;
     border: 2px solid #333333;
-    background-color: inherit;
+    background-color: transparent;
     color: #1a1a1a;
     text-decoration: none;
     font-weight: 700;
@@ -101,15 +111,21 @@ a {
     font-size: 0.75rem;
     letter-spacing: 1px;
     cursor: pointer;
-    border-radius: 0;
+    border-radius: 6px;
     transition:
-        background-color 0.1s,
-        color 0.1s;
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
 }
 
 .btn:hover {
     background-color: #333333;
-    color: #e0e0e0;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
 
 .project-box[data-name="Raycer"] {
@@ -149,6 +165,18 @@ a {
     width: 100%;
     height: calc(100% - 71px);
     overflow: hidden;
+    position: relative;
+}
+
+.box-screenshot::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.08));
+    pointer-events: none;
 }
 
 .box-screenshot img {
@@ -157,6 +185,11 @@ a {
     object-fit: cover;
     object-position: top center;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-box:hover .box-screenshot img {
+    transform: scale(1.03);
 }
 
 /* Responsive */
@@ -170,14 +203,19 @@ a {
 
     .grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .project-box {
-        height: 220px;
+        height: 240px;
     }
 
     .box-top {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .btn {
+        border-radius: 6px;
     }
 }
