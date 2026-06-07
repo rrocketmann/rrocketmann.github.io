@@ -1,178 +1,183 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
-html, body {
-  width: 100%;
-  overflow-x: hidden;
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
-  background-color: transparent;
-  color: #1a1a1a;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.5;
-  padding: 24px;
+    background-color: transparent;
+    color: #1a1a1a;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    line-height: 1.5;
+    padding: 24px;
 }
 
 #nbody {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
 /* Grid */
 .grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 1000px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Project Box */
 .project-box {
-  position: relative;
-  height: 260px;
-  border: 2px solid #333333;
-  background-color: #f5f5f5;
-  background-size: cover;
-  background-position: top center;
-  overflow: hidden;
-  border-radius: 0;
+    position: relative;
+    height: 260px;
+    border: 2px solid #333333;
+    background-color: #f5f5f5;
+    background-size: cover;
+    background-position: top center;
+    overflow: hidden;
+    border-radius: 4 px;
 }
 
 /* Top overlay with title + buttons */
 .box-top {
-  background-color: inherit;
-  border-bottom: 2px solid #333333;
-  padding: 14px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+    background-color: inherit;
+    border-bottom: 2px solid #333333;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .box-top h3 {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
 }
 
 .box-buttons {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 /* Buttons */
 .btn {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 2px solid #333333;
-  background-color: inherit;
-  color: #1a1a1a;
-  text-decoration: none;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: 0;
-  transition: background-color 0.1s, color 0.1s;
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid #333333;
+    background-color: inherit;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 4 px;
+    transition:
+        background-color 0.1s,
+        color 0.1s;
 }
 
 .btn:hover {
-  background-color: #333333;
-  color: #e0e0e0;
+    background-color: #333333;
+    color: #e0e0e0;
 }
 
 .project-box[data-name="Raycer"] {
-  background-color: #f4b6b6;
+    background-color: #f4b6b6;
 }
 
 .project-box[data-name="Raycer"] .box-screenshot img {
-  background-color: #f4b6b6;
+    background-color: #f4b6b6;
 }
 
 .project-box[data-name="Hanvas"],
 .project-box[data-name="Schoolargy"] {
-  background-color: #bcdcff;
+    background-color: #bcdcff;
 }
 
 .project-box[data-name="Aivester"],
 .project-box[data-name="Fish-logger"],
 .project-box[data-name="Gen-slater"],
 .project-box[data-name="Webllm-chat"] {
-  background-color: #c8f2c8;
+    background-color: #c8f2c8;
 }
 
 .project-box[data-name="OrbitDance"] {
-  background-color: #f3b8f3;
+    background-color: #f3b8f3;
 }
 
 .project-box[data-name="Socrates-ai"] {
-  background-color: #d4d4d4;
+    background-color: #d4d4d4;
 }
 
 .project-box[data-name="De-bug-duck"] {
-  background-color: #fff2a8;
+    background-color: #fff2a8;
 }
 
 /* Screenshot */
 .box-screenshot {
-  width: 100%;
-  height: calc(100% - 71px);
-  overflow: hidden;
+    width: 100%;
+    height: calc(100% - 71px);
+    overflow: hidden;
 }
 
 .box-screenshot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .box-screenshot {
-    height: calc(100% - 97px);
-  }
-  body {
-    padding: 12px;
-  }
+    .box-screenshot {
+        height: calc(100% - 97px);
+    }
+    body {
+        padding: 12px;
+    }
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
+    .grid {
+        grid-template-columns: 1fr;
+    }
 
-  .project-box {
-    height: 220px;
-  }
+    .project-box {
+        height: 220px;
+    }
 
-  .box-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .box-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
