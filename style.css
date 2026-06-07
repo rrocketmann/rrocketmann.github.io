@@ -60,8 +60,7 @@ a {
     background-size: cover;
     background-position: top center;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
 }
 
 /* Top overlay with title + buttons */
@@ -102,7 +101,7 @@ a {
     font-size: 0.75rem;
     letter-spacing: 1px;
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 4px;
     transition:
         background-color 0.2s ease,
         color 0.2s ease,
@@ -115,12 +114,49 @@ a {
     transform: scale(1.05);
 }
 
+.project-box[data-name="Raycer"] .btn:hover {
+    background-color: #c97a7a;
+}
+
+.project-box[data-name="Hanvas"] .btn:hover,
+.project-box[data-name="Schoolargy"] .btn:hover {
+    background-color: #7aa8dc;
+}
+
+.project-box[data-name="Aivester"] .btn:hover,
+.project-box[data-name="Fish-logger"] .btn:hover,
+.project-box[data-name="Gen-slater"] .btn:hover,
+.project-box[data-name="Webllm-chat"] .btn:hover {
+    background-color: #7bc87b;
+}
+
+.project-box[data-name="OrbitDance"] .btn:hover {
+    background-color: #cc7acc;
+}
+
+.project-box[data-name="Socrates-ai"] .btn:hover {
+    background-color: #9c9c9c;
+}
+
+.project-box[data-name="De-bug-duck"] .btn:hover {
+    background-color: #e6cc5c;
+}
+
 .btn:active {
     transform: scale(0.98);
 }
 
 .project-box[data-name="Raycer"] {
     background-color: #f4b6b6;
+    border-color: #c97a7a;
+}
+
+.project-box[data-name="Raycer"] .box-top {
+    border-bottom-color: #c97a7a;
+}
+
+.project-box[data-name="Raycer"] .btn {
+    border-color: #c97a7a;
 }
 
 .project-box[data-name="Raycer"] .box-screenshot img {
@@ -130,6 +166,17 @@ a {
 .project-box[data-name="Hanvas"],
 .project-box[data-name="Schoolargy"] {
     background-color: #bcdcff;
+    border-color: #7aa8dc;
+}
+
+.project-box[data-name="Hanvas"] .box-top,
+.project-box[data-name="Schoolargy"] .box-top {
+    border-bottom-color: #7aa8dc;
+}
+
+.project-box[data-name="Hanvas"] .btn,
+.project-box[data-name="Schoolargy"] .btn {
+    border-color: #7aa8dc;
 }
 
 .project-box[data-name="Aivester"],
@@ -137,18 +184,60 @@ a {
 .project-box[data-name="Gen-slater"],
 .project-box[data-name="Webllm-chat"] {
     background-color: #c8f2c8;
+    border-color: #7bc87b;
+}
+
+.project-box[data-name="Aivester"] .box-top,
+.project-box[data-name="Fish-logger"] .box-top,
+.project-box[data-name="Gen-slater"] .box-top,
+.project-box[data-name="Webllm-chat"] .box-top {
+    border-bottom-color: #7bc87b;
+}
+
+.project-box[data-name="Aivester"] .btn,
+.project-box[data-name="Fish-logger"] .btn,
+.project-box[data-name="Gen-slater"] .btn,
+.project-box[data-name="Webllm-chat"] .btn {
+    border-color: #7bc87b;
 }
 
 .project-box[data-name="OrbitDance"] {
     background-color: #f3b8f3;
+    border-color: #cc7acc;
+}
+
+.project-box[data-name="OrbitDance"] .box-top {
+    border-bottom-color: #cc7acc;
+}
+
+.project-box[data-name="OrbitDance"] .btn {
+    border-color: #cc7acc;
 }
 
 .project-box[data-name="Socrates-ai"] {
     background-color: #d4d4d4;
+    border-color: #9c9c9c;
+}
+
+.project-box[data-name="Socrates-ai"] .box-top {
+    border-bottom-color: #9c9c9c;
+}
+
+.project-box[data-name="Socrates-ai"] .btn {
+    border-color: #9c9c9c;
 }
 
 .project-box[data-name="De-bug-duck"] {
     background-color: #fff2a8;
+    border-color: #e6cc5c;
+}
+
+.project-box[data-name="De-bug-duck"] .box-top {
+    border-bottom-color: #e6cc5c;
+}
+
+.project-box[data-name="De-bug-duck"] .btn {
+    border-color: #e6cc5c;
 }
 
 /* Screenshot */
@@ -202,6 +291,6 @@ a {
     }
 
     .btn {
-        border-radius: 6px;
+        border-radius: 4px;
     }
 }
