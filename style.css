@@ -60,7 +60,7 @@ a {
     background-size: cover;
     background-position: top center;
     overflow: hidden;
-    border-radius: 4 px;
+    border-radius: 0;
 }
 
 /* Top overlay with title + buttons */
@@ -101,7 +101,7 @@ a {
     font-size: 0.75rem;
     letter-spacing: 1px;
     cursor: pointer;
-    border-radius: 4 px;
+    border-radius: 0;
     transition:
         background-color 0.1s,
         color 0.1s;
