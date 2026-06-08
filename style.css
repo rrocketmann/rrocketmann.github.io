@@ -245,18 +245,6 @@ a {
     width: 100%;
     height: calc(100% - 71px);
     overflow: hidden;
-    position: relative;
-}
-
-.box-screenshot::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.08));
-    pointer-events: none;
 }
 
 .box-screenshot img {
