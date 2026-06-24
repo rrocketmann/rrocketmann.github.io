@@ -61,6 +61,7 @@ a {
     background-position: top center;
     overflow: hidden;
     border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Top overlay with title + buttons */
