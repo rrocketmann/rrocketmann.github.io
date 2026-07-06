@@ -228,6 +228,23 @@ a {
     border-color: #9c9c9c;
 }
 
+.project-box[data-name="Cellscript"] {
+    background-color: #d4d4d4;
+    border-color: #9c9c9c;
+}
+
+.project-box[data-name="Cellscript"] .box-top {
+    border-bottom-color: #9c9c9c;
+}
+
+.project-box[data-name="Cellscript"] .btn {
+    border-color: #9c9c9c;
+}
+
+.project-box[data-name="Cellscript"] .btn:hover {
+    background-color: #9c9c9c;
+}
+
 .project-box[data-name="De-bug-duck"] {
     background-color: #fff2a8;
     border-color: #e6cc5c;
