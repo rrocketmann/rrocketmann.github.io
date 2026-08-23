@@ -115,6 +115,10 @@ a {
     transform: scale(1.05);
 }
 
+.project-box[data-name="Traktion"] .btn:hover {
+    background-color: #e08a4d;
+}
+
 .project-box[data-name="Raycer"] .btn:hover {
     background-color: #c97a7a;
 }
@@ -145,6 +149,23 @@ a {
 
 .btn:active {
     transform: scale(0.98);
+}
+
+.project-box[data-name="Traktion"] {
+    background-color: #ffd4b0;
+    border-color: #e08a4d;
+}
+
+.project-box[data-name="Traktion"] .box-top {
+    border-bottom-color: #e08a4d;
+}
+
+.project-box[data-name="Traktion"] .btn {
+    border-color: #e08a4d;
+}
+
+.project-box[data-name="Traktion"] .box-screenshot img {
+    background-color: #ffd4b0;
 }
 
 .project-box[data-name="Raycer"] {
