@@ -55,19 +55,22 @@ a {
 .project-box {
     position: relative;
     height: 280px;
-    border: 2px solid #333333;
-    background-color: #f5f5f5;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     background-size: cover;
     background-position: top center;
     overflow: hidden;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
 }
 
 /* Top overlay with title + buttons */
 .box-top {
-    background-color: inherit;
-    border-bottom: 2px solid #333333;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     padding: 16px 18px;
     display: flex;
     justify-content: space-between;
@@ -93,8 +96,10 @@ a {
 .btn {
     display: inline-block;
     padding: 8px 16px;
-    border: 2px solid #333333;
-    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #1a1a1a;
     text-decoration: none;
     font-weight: 700;
@@ -102,16 +107,18 @@ a {
     font-size: 0.75rem;
     letter-spacing: 1px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 16px;
     transition:
-        background-color 0.2s ease,
+        background 0.2s ease,
         color 0.2s ease,
-        transform 0.15s ease;
+        transform 0.15s ease,
+        border-color 0.2s ease;
 }
 
 .btn:hover {
-    background-color: #333333;
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.4);
+    color: #1a1a1a;
+    border-color: rgba(255, 255, 255, 0.5);
     transform: scale(1.05);
 }
 
@@ -152,131 +159,185 @@ a {
 }
 
 .project-box[data-name="Traktion"] {
-    background-color: #ffd4b0;
-    border-color: #e08a4d;
+    background: rgba(224, 138, 77, 0.2);
+    border: 1px solid rgba(224, 138, 77, 0.4);
 }
 
 .project-box[data-name="Traktion"] .box-top {
-    border-bottom-color: #e08a4d;
+    border-bottom: 1px solid rgba(224, 138, 77, 0.3);
 }
 
 .project-box[data-name="Traktion"] .btn {
-    border-color: #e08a4d;
+    border-color: rgba(224, 138, 77, 0.5);
+}
+
+.project-box[data-name="Traktion"] .btn:hover {
+    background: rgba(224, 138, 77, 0.4);
+    border-color: rgba(224, 138, 77, 0.7);
 }
 
 .project-box[data-name="Traktion"] .box-screenshot img {
-    background-color: #ffd4b0;
+    background-color: transparent;
 }
 
 .project-box[data-name="Raycer"] {
-    background-color: #f4b6b6;
-    border-color: #c97a7a;
+    background: rgba(201, 122, 122, 0.2);
+    border: 1px solid rgba(201, 122, 122, 0.4);
 }
 
 .project-box[data-name="Raycer"] .box-top {
-    border-bottom-color: #c97a7a;
+    border-bottom: 1px solid rgba(201, 122, 122, 0.3);
 }
 
 .project-box[data-name="Raycer"] .btn {
-    border-color: #c97a7a;
+    border-color: rgba(201, 122, 122, 0.5);
+}
+
+.project-box[data-name="Raycer"] .btn:hover {
+    background: rgba(201, 122, 122, 0.4);
+    border-color: rgba(201, 122, 122, 0.7);
 }
 
 .project-box[data-name="Raycer"] .box-screenshot img {
-    background-color: #f4b6b6;
+    background-color: transparent;
 }
 
-.project-box[data-name="Hanvas"],
+.project-box[data-name="Hanvas"] {
+    background: rgba(122, 168, 220, 0.2);
+    border: 1px solid rgba(122, 168, 220, 0.4);
+}
+
+.project-box[data-name="Hanvas"] .box-top {
+    border-bottom: 1px solid rgba(122, 168, 220, 0.3);
+}
+
+.project-box[data-name="Hanvas"] .btn {
+    border-color: rgba(122, 168, 220, 0.5);
+}
+
+.project-box[data-name="Hanvas"] .btn:hover {
+    background: rgba(122, 168, 220, 0.4);
+    border-color: rgba(122, 168, 220, 0.7);
+}
+
 .project-box[data-name="Schoolargy"] {
-    background-color: #bcdcff;
-    border-color: #7aa8dc;
+    background: rgba(156, 156, 156, 0.2);
+    border: 1px solid rgba(156, 156, 156, 0.4);
 }
 
-.project-box[data-name="Hanvas"] .box-top,
 .project-box[data-name="Schoolargy"] .box-top {
-    border-bottom-color: #7aa8dc;
+    border-bottom: 1px solid rgba(156, 156, 156, 0.3);
 }
 
-.project-box[data-name="Hanvas"] .btn,
 .project-box[data-name="Schoolargy"] .btn {
-    border-color: #7aa8dc;
+    border-color: rgba(156, 156, 156, 0.5);
+}
+
+.project-box[data-name="Schoolargy"] .btn:hover {
+    background: rgba(156, 156, 156, 0.4);
+    border-color: rgba(156, 156, 156, 0.7);
 }
 
 .project-box[data-name="Aivester"],
 .project-box[data-name="Fish-logger"],
 .project-box[data-name="Gen-slater"],
 .project-box[data-name="Webllm-chat"] {
-    background-color: #c8f2c8;
-    border-color: #7bc87b;
+    background: rgba(123, 200, 123, 0.2);
+    border: 1px solid rgba(123, 200, 123, 0.4);
 }
 
 .project-box[data-name="Aivester"] .box-top,
 .project-box[data-name="Fish-logger"] .box-top,
 .project-box[data-name="Gen-slater"] .box-top,
 .project-box[data-name="Webllm-chat"] .box-top {
-    border-bottom-color: #7bc87b;
+    border-bottom: 1px solid rgba(123, 200, 123, 0.3);
 }
 
 .project-box[data-name="Aivester"] .btn,
 .project-box[data-name="Fish-logger"] .btn,
 .project-box[data-name="Gen-slater"] .btn,
 .project-box[data-name="Webllm-chat"] .btn {
-    border-color: #7bc87b;
+    border-color: rgba(123, 200, 123, 0.5);
+}
+
+.project-box[data-name="Aivester"] .btn:hover,
+.project-box[data-name="Fish-logger"] .btn:hover,
+.project-box[data-name="Gen-slater"] .btn:hover,
+.project-box[data-name="Webllm-chat"] .btn:hover {
+    background: rgba(123, 200, 123, 0.4);
+    border-color: rgba(123, 200, 123, 0.7);
 }
 
 .project-box[data-name="OrbitDance"] {
-    background-color: #f3b8f3;
-    border-color: #cc7acc;
+    background: rgba(204, 122, 204, 0.2);
+    border: 1px solid rgba(204, 122, 204, 0.4);
 }
 
 .project-box[data-name="OrbitDance"] .box-top {
-    border-bottom-color: #cc7acc;
+    border-bottom: 1px solid rgba(204, 122, 204, 0.3);
 }
 
 .project-box[data-name="OrbitDance"] .btn {
-    border-color: #cc7acc;
+    border-color: rgba(204, 122, 204, 0.5);
+}
+
+.project-box[data-name="OrbitDance"] .btn:hover {
+    background: rgba(204, 122, 204, 0.4);
+    border-color: rgba(204, 122, 204, 0.7);
 }
 
 .project-box[data-name="Socrates-ai"] {
-    background-color: #d4d4d4;
-    border-color: #9c9c9c;
+    background: rgba(156, 156, 156, 0.2);
+    border: 1px solid rgba(156, 156, 156, 0.4);
 }
 
 .project-box[data-name="Socrates-ai"] .box-top {
-    border-bottom-color: #9c9c9c;
+    border-bottom: 1px solid rgba(156, 156, 156, 0.3);
 }
 
 .project-box[data-name="Socrates-ai"] .btn {
-    border-color: #9c9c9c;
+    border-color: rgba(156, 156, 156, 0.5);
+}
+
+.project-box[data-name="Socrates-ai"] .btn:hover {
+    background: rgba(156, 156, 156, 0.4);
+    border-color: rgba(156, 156, 156, 0.7);
 }
 
 .project-box[data-name="Cellscript"] {
-    background-color: #d4d4d4;
-    border-color: #9c9c9c;
+    background: rgba(156, 156, 156, 0.2);
+    border: 2px solid rgba(156, 156, 156, 0.8);
 }
 
 .project-box[data-name="Cellscript"] .box-top {
-    border-bottom-color: #9c9c9c;
+    border-bottom: 2px solid rgba(156, 156, 156, 0.8);
 }
 
 .project-box[data-name="Cellscript"] .btn {
-    border-color: #9c9c9c;
+    border-color: rgba(156, 156, 156, 0.8);
 }
 
 .project-box[data-name="Cellscript"] .btn:hover {
-    background-color: #9c9c9c;
+    background: rgba(156, 156, 156, 0.4);
+    border-color: rgba(156, 156, 156, 0.7);
 }
 
 .project-box[data-name="De-bug-duck"] {
-    background-color: #fff2a8;
-    border-color: #e6cc5c;
+    background: rgba(230, 204, 92, 0.2);
+    border: 1px solid rgba(230, 204, 92, 0.4);
 }
 
 .project-box[data-name="De-bug-duck"] .box-top {
-    border-bottom-color: #e6cc5c;
+    border-bottom: 1px solid rgba(230, 204, 92, 0.3);
 }
 
 .project-box[data-name="De-bug-duck"] .btn {
-    border-color: #e6cc5c;
+    border-color: rgba(230, 204, 92, 0.5);
+}
+
+.project-box[data-name="De-bug-duck"] .btn:hover {
+    background: rgba(230, 204, 92, 0.4);
+    border-color: rgba(230, 204, 92, 0.7);
 }
 
 /* Screenshot */
@@ -292,6 +353,8 @@ a {
     object-fit: cover;
     object-position: top center;
     display: block;
+    opacity: 0.85;
+    mix-blend-mode: overlay;
 }
 
 /* Responsive */
@@ -318,6 +381,6 @@ a {
     }
 
     .btn {
-        border-radius: 4px;
+        border-radius: 16px;
     }
 }
