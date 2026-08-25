@@ -79,6 +79,80 @@ function draw() {
   }
 }
 
+const WARP_RADIUS = 280;
+const WARP_LERP = 0.22;
+let projectBoxes = [];
+
+function layoutBoxes() {
+  projectBoxes = Array.from(document.querySelectorAll('.project-box'));
+  for (const box of projectBoxes) {
+    box.style.transform = 'none';
+    const r = box.getBoundingClientRect();
+    box._cx = r.left + r.width / 2;
+    box._cy = r.top + r.height / 2;
+    box._w = r.width;
+    box._h = r.height;
+    box.style.transform = '';
+  }
+}
+
+function warpBoxes() {
+  for (const box of projectBoxes) {
+    if (box._cx == null) continue;
+    let pullX = 0;
+    let pullY = 0;
+    let influence = 0;
+    let highlightX = box._cx;
+    let highlightY = box._cy;
+    let best = 0;
+
+    for (const b of bodies) {
+      const dx = b.x - box._cx;
+      const dy = b.y - box._cy;
+      const dist = Math.hypot(dx, dy);
+      if (dist >= WARP_RADIUS || dist < 1) continue;
+      const t = 1 - dist / WARP_RADIUS;
+      const falloff = t * t * (b.mass / 3);
+      pullX += (dx / dist) * falloff;
+      pullY += (dy / dist) * falloff;
+      influence += falloff;
+      if (falloff > best) {
+        best = falloff;
+        highlightX = b.x;
+        highlightY = b.y;
+      }
+    }
+
+    const mag = Math.min(influence, 1.35);
+    const targetX = pullX * 18;
+    const targetY = pullY * 18;
+    const targetZ = mag * 18;
+    const targetRy = pullX * 7;
+    const targetRx = -pullY * 7;
+    const targetS = 1 + mag * 0.04;
+    const targetG = Math.min(1, mag * 0.85);
+
+    box._tx = (box._tx || 0) + (targetX - (box._tx || 0)) * WARP_LERP;
+    box._ty = (box._ty || 0) + (targetY - (box._ty || 0)) * WARP_LERP;
+    box._tz = (box._tz || 0) + (targetZ - (box._tz || 0)) * WARP_LERP;
+    box._trx = (box._trx || 0) + (targetRx - (box._trx || 0)) * WARP_LERP;
+    box._try = (box._try || 0) + (targetRy - (box._try || 0)) * WARP_LERP;
+    box._ts = (box._ts == null ? 1 : box._ts) + (targetS - (box._ts == null ? 1 : box._ts)) * WARP_LERP;
+    box._tg = (box._tg || 0) + (targetG - (box._tg || 0)) * WARP_LERP;
+
+    box.style.setProperty('--wx', box._tx.toFixed(2) + 'px');
+    box.style.setProperty('--wy', box._ty.toFixed(2) + 'px');
+    box.style.setProperty('--wz', box._tz.toFixed(2) + 'px');
+    box.style.setProperty('--rx', box._trx.toFixed(2) + 'deg');
+    box.style.setProperty('--ry', box._try.toFixed(2) + 'deg');
+    box.style.setProperty('--ws', box._ts.toFixed(3));
+    box.style.setProperty('--lg', box._tg.toFixed(3));
+    box.style.setProperty('--lx', (((highlightX - (box._cx - box._w / 2)) / box._w) * 100).toFixed(1) + '%');
+    box.style.setProperty('--ly', (((highlightY - (box._cy - box._h / 2)) / box._h) * 100).toFixed(1) + '%');
+    box.style.zIndex = box._tg > 0.04 ? String(5 + Math.round(box._tg * 10)) : '';
+  }
+}
+
 const DT = 1 / 240;
 let accumulator = 0;
 let lastTime = -1;
@@ -106,6 +180,7 @@ function loop(time) {
     }
   }
   draw();
+  warpBoxes();
   requestAnimationFrame(loop);
 }
 
@@ -123,6 +198,12 @@ document.addEventListener('click', (e) => {
 
 resize();
 detectTheme();
+layoutBoxes();
 loop();
 
-window.addEventListener('resize', resize);
+window.addEventListener('resize', () => {
+  resize();
+  layoutBoxes();
+});
+window.addEventListener('scroll', layoutBoxes, { passive: true });
+window.addEventListener('load', layoutBoxes);

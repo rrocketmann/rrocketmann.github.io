@@ -49,28 +49,59 @@ a {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    perspective: 900px;
 }
 
-/* Project Box */
+/* Project Box — liquid glass */
 .project-box {
+    --wx: 0px;
+    --wy: 0px;
+    --wz: 0px;
+    --rx: 0deg;
+    --ry: 0deg;
+    --ws: 1;
+    --lx: 50%;
+    --ly: 50%;
+    --lg: 0;
     position: relative;
     height: 280px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(51, 51, 51, 0.45);
+    background: rgba(255, 255, 255, 0.38);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
     background-size: cover;
     background-position: top center;
     overflow: hidden;
-    border-radius: 16px;
+    border-radius: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+    transform-origin: center center;
+    transform: perspective(800px) translate3d(var(--wx), var(--wy), var(--wz))
+        rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--ws));
+    will-change: transform;
+}
+
+.project-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 3;
+    background: radial-gradient(
+        220px circle at var(--lx) var(--ly),
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.1) 36%,
+        transparent 68%
+    );
+    opacity: var(--lg);
 }
 
 /* Top overlay with title + buttons */
 .box-top {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    position: relative;
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.28);
+    border-bottom: 1px solid rgba(51, 51, 51, 0.28);
     padding: 16px 18px;
     display: flex;
     justify-content: space-between;
@@ -96,10 +127,8 @@ a {
 .btn {
     display: inline-block;
     padding: 8px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(51, 51, 51, 0.45);
+    background: rgba(255, 255, 255, 0.4);
     color: #1a1a1a;
     text-decoration: none;
     font-weight: 700;
@@ -107,18 +136,16 @@ a {
     font-size: 0.75rem;
     letter-spacing: 1px;
     cursor: pointer;
-    border-radius: 16px;
+    border-radius: 10px;
     transition:
-        background 0.2s ease,
+        background-color 0.2s ease,
         color 0.2s ease,
-        transform 0.15s ease,
-        border-color 0.2s ease;
+        transform 0.15s ease;
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    color: #1a1a1a;
-    border-color: rgba(255, 255, 255, 0.5);
+    background-color: #333333;
+    color: #ffffff;
     transform: scale(1.05);
 }
 
@@ -131,7 +158,7 @@ a {
 }
 
 .project-box[data-name="Hanvas"] .btn:hover,
-.project-box[data-name="Schoolargy"] .btn:hover {
+.project-box[data-name="Schoolagy"] .btn:hover {
     background-color: #7aa8dc;
 }
 
@@ -146,7 +173,8 @@ a {
     background-color: #cc7acc;
 }
 
-.project-box[data-name="Socrates-ai"] .btn:hover {
+.project-box[data-name="Socrates-ai"] .btn:hover,
+.project-box[data-name="Cellscript"] .btn:hover {
     background-color: #9c9c9c;
 }
 
@@ -159,20 +187,15 @@ a {
 }
 
 .project-box[data-name="Traktion"] {
-    background: rgba(224, 138, 77, 0.2);
-    border: 1px solid rgba(224, 138, 77, 0.4);
+    background: rgba(255, 212, 176, 0.42);
+    border-color: rgba(224, 138, 77, 0.75);
 }
 
 .project-box[data-name="Traktion"] .box-top {
-    border-bottom: 1px solid rgba(224, 138, 77, 0.3);
+    border-bottom-color: rgba(224, 138, 77, 0.55);
 }
 
 .project-box[data-name="Traktion"] .btn {
-    border-color: rgba(224, 138, 77, 0.5);
-}
-
-.project-box[data-name="Traktion"] .btn:hover {
-    background: rgba(224, 138, 77, 0.4);
     border-color: rgba(224, 138, 77, 0.7);
 }
 
@@ -181,20 +204,15 @@ a {
 }
 
 .project-box[data-name="Raycer"] {
-    background: rgba(201, 122, 122, 0.2);
-    border: 1px solid rgba(201, 122, 122, 0.4);
+    background: rgba(244, 182, 182, 0.42);
+    border-color: rgba(201, 122, 122, 0.75);
 }
 
 .project-box[data-name="Raycer"] .box-top {
-    border-bottom: 1px solid rgba(201, 122, 122, 0.3);
+    border-bottom-color: rgba(201, 122, 122, 0.55);
 }
 
 .project-box[data-name="Raycer"] .btn {
-    border-color: rgba(201, 122, 122, 0.5);
-}
-
-.project-box[data-name="Raycer"] .btn:hover {
-    background: rgba(201, 122, 122, 0.4);
     border-color: rgba(201, 122, 122, 0.7);
 }
 
@@ -202,146 +220,89 @@ a {
     background-color: transparent;
 }
 
-.project-box[data-name="Hanvas"] {
-    background: rgba(122, 168, 220, 0.2);
-    border: 1px solid rgba(122, 168, 220, 0.4);
+.project-box[data-name="Hanvas"],
+.project-box[data-name="Schoolagy"] {
+    background: rgba(188, 220, 255, 0.42);
+    border-color: rgba(122, 168, 220, 0.75);
 }
 
-.project-box[data-name="Hanvas"] .box-top {
-    border-bottom: 1px solid rgba(122, 168, 220, 0.3);
+.project-box[data-name="Hanvas"] .box-top,
+.project-box[data-name="Schoolagy"] .box-top {
+    border-bottom-color: rgba(122, 168, 220, 0.55);
 }
 
-.project-box[data-name="Hanvas"] .btn {
-    border-color: rgba(122, 168, 220, 0.5);
-}
-
-.project-box[data-name="Hanvas"] .btn:hover {
-    background: rgba(122, 168, 220, 0.4);
+.project-box[data-name="Hanvas"] .btn,
+.project-box[data-name="Schoolagy"] .btn {
     border-color: rgba(122, 168, 220, 0.7);
-}
-
-.project-box[data-name="Schoolargy"] {
-    background: rgba(156, 156, 156, 0.2);
-    border: 1px solid rgba(156, 156, 156, 0.4);
-}
-
-.project-box[data-name="Schoolargy"] .box-top {
-    border-bottom: 1px solid rgba(156, 156, 156, 0.3);
-}
-
-.project-box[data-name="Schoolargy"] .btn {
-    border-color: rgba(156, 156, 156, 0.5);
-}
-
-.project-box[data-name="Schoolargy"] .btn:hover {
-    background: rgba(156, 156, 156, 0.4);
-    border-color: rgba(156, 156, 156, 0.7);
 }
 
 .project-box[data-name="Aivester"],
 .project-box[data-name="Fish-logger"],
 .project-box[data-name="Gen-slater"],
 .project-box[data-name="Webllm-chat"] {
-    background: rgba(123, 200, 123, 0.2);
-    border: 1px solid rgba(123, 200, 123, 0.4);
+    background: rgba(200, 242, 200, 0.42);
+    border-color: rgba(123, 200, 123, 0.75);
 }
 
 .project-box[data-name="Aivester"] .box-top,
 .project-box[data-name="Fish-logger"] .box-top,
 .project-box[data-name="Gen-slater"] .box-top,
 .project-box[data-name="Webllm-chat"] .box-top {
-    border-bottom: 1px solid rgba(123, 200, 123, 0.3);
+    border-bottom-color: rgba(123, 200, 123, 0.55);
 }
 
 .project-box[data-name="Aivester"] .btn,
 .project-box[data-name="Fish-logger"] .btn,
 .project-box[data-name="Gen-slater"] .btn,
 .project-box[data-name="Webllm-chat"] .btn {
-    border-color: rgba(123, 200, 123, 0.5);
-}
-
-.project-box[data-name="Aivester"] .btn:hover,
-.project-box[data-name="Fish-logger"] .btn:hover,
-.project-box[data-name="Gen-slater"] .btn:hover,
-.project-box[data-name="Webllm-chat"] .btn:hover {
-    background: rgba(123, 200, 123, 0.4);
     border-color: rgba(123, 200, 123, 0.7);
 }
 
 .project-box[data-name="OrbitDance"] {
-    background: rgba(204, 122, 204, 0.2);
-    border: 1px solid rgba(204, 122, 204, 0.4);
+    background: rgba(243, 184, 243, 0.42);
+    border-color: rgba(204, 122, 204, 0.75);
 }
 
 .project-box[data-name="OrbitDance"] .box-top {
-    border-bottom: 1px solid rgba(204, 122, 204, 0.3);
+    border-bottom-color: rgba(204, 122, 204, 0.55);
 }
 
 .project-box[data-name="OrbitDance"] .btn {
-    border-color: rgba(204, 122, 204, 0.5);
-}
-
-.project-box[data-name="OrbitDance"] .btn:hover {
-    background: rgba(204, 122, 204, 0.4);
     border-color: rgba(204, 122, 204, 0.7);
 }
 
-.project-box[data-name="Socrates-ai"] {
-    background: rgba(156, 156, 156, 0.2);
-    border: 1px solid rgba(156, 156, 156, 0.4);
-}
-
-.project-box[data-name="Socrates-ai"] .box-top {
-    border-bottom: 1px solid rgba(156, 156, 156, 0.3);
-}
-
-.project-box[data-name="Socrates-ai"] .btn {
-    border-color: rgba(156, 156, 156, 0.5);
-}
-
-.project-box[data-name="Socrates-ai"] .btn:hover {
-    background: rgba(156, 156, 156, 0.4);
-    border-color: rgba(156, 156, 156, 0.7);
-}
-
+.project-box[data-name="Socrates-ai"],
 .project-box[data-name="Cellscript"] {
-    background: rgba(156, 156, 156, 0.2);
-    border: 2px solid rgba(156, 156, 156, 0.8);
-}
-
-.project-box[data-name="Cellscript"] .box-top {
-    border-bottom: 2px solid rgba(156, 156, 156, 0.8);
-}
-
-.project-box[data-name="Cellscript"] .btn {
+    background: rgba(212, 212, 212, 0.42);
     border-color: rgba(156, 156, 156, 0.8);
 }
 
-.project-box[data-name="Cellscript"] .btn:hover {
-    background: rgba(156, 156, 156, 0.4);
-    border-color: rgba(156, 156, 156, 0.7);
+.project-box[data-name="Socrates-ai"] .box-top,
+.project-box[data-name="Cellscript"] .box-top {
+    border-bottom-color: rgba(156, 156, 156, 0.6);
+}
+
+.project-box[data-name="Socrates-ai"] .btn,
+.project-box[data-name="Cellscript"] .btn {
+    border-color: rgba(156, 156, 156, 0.75);
 }
 
 .project-box[data-name="De-bug-duck"] {
-    background: rgba(230, 204, 92, 0.2);
-    border: 1px solid rgba(230, 204, 92, 0.4);
+    background: rgba(255, 242, 168, 0.42);
+    border-color: rgba(230, 204, 92, 0.75);
 }
 
 .project-box[data-name="De-bug-duck"] .box-top {
-    border-bottom: 1px solid rgba(230, 204, 92, 0.3);
+    border-bottom-color: rgba(230, 204, 92, 0.55);
 }
 
 .project-box[data-name="De-bug-duck"] .btn {
-    border-color: rgba(230, 204, 92, 0.5);
-}
-
-.project-box[data-name="De-bug-duck"] .btn:hover {
-    background: rgba(230, 204, 92, 0.4);
     border-color: rgba(230, 204, 92, 0.7);
 }
 
 /* Screenshot */
 .box-screenshot {
+    position: relative;
     width: 100%;
     height: calc(100% - 71px);
     overflow: hidden;
@@ -353,8 +314,19 @@ a {
     object-fit: cover;
     object-position: top center;
     display: block;
-    opacity: 0.85;
-    mix-blend-mode: overlay;
+    opacity: 0.9;
+}
+
+.box-screenshot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.22),
+        transparent 42%
+    );
 }
 
 /* Responsive */
@@ -381,6 +353,6 @@ a {
     }
 
     .btn {
-        border-radius: 16px;
+        border-radius: 10px;
     }
 }
